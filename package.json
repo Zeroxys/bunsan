@@ -1,0 +1,25 @@
+{
+  "name": "bunsan-cloud",
+  "version": "1.0.0",
+  "private": true,
+  "description": "bunsan-cloud",
+  "author": "Miguel Zavala",
+  "keywords": [
+    "gatsby"
+  ],
+  "scripts": {
+    "develop": "gatsby develop",
+    "start": "gatsby develop",
+    "build": "gatsby build",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
+    "gatsby": "^5.2.0",
+    "gatsby-plugin-emotion": "^8.3.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
+}
