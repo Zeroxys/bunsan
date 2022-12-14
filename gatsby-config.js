@@ -4,7 +4,7 @@
 module.exports = {
   siteMetadata: {
     title: `bunsan-cloud`,
-    siteUrl: `https://www.yourdomain.tld`
+    siteUrl: `https://www.yourdomain.tld`,
   },
-  plugins: ["gatsby-plugin-emotion"]
+  plugins: ["gatsby-plugin-emotion", "gatsby-plugin-fontawesome-css"],
 };
