@@ -18,9 +18,18 @@ import {
 
 const options = [
   {
+    type: '',
+    isAdmin:false,
+    allocation : 1000,
+    items: [],
+    id:1,
+    icon: faCode,
+  },
+  {
     type: 'Developer',
     isAdmin:false,
     allocation : 1000,
+    items: [],
     id:1,
     icon: faCode,
   },
@@ -28,6 +37,7 @@ const options = [
     type: 'QA-Tester',
     isAdmin:false,
     allocation : 500,
+    items: [],
     id:2,
     icon: faGear
   },
@@ -41,8 +51,9 @@ const options = [
   },
 ]
 
-const Node = ({ source:{icon, items, isAdmin }}) => {
+const Node = ({ setSource, dataSource : {icon, items, isAdmin, type } }) => {
   const [hideComponent, setHideComponent] = useState(false)
+  const [showSelect, setShowSelect] = useState(false)
   const style = styles()
   return (
     <div className={style.wrapper}>
@@ -55,14 +66,28 @@ const Node = ({ source:{icon, items, isAdmin }}) => {
         <div>
           <div className={style.treeWrapper}>
             <FontAwesomeIcon icon={icon} size="2x" />
-            Manager          
+            <p>{type}</p>      
           </div>
         </div>
         <div className={style.options}>
           <FontAwesomeIcon icon={faRemove} size="1x" />
-          <FontAwesomeIcon icon={faEdit} size="1x" />
+          <FontAwesomeIcon 
+            onClick={() => setShowSelect(true)} 
+            icon={faEdit} size="1x" />
           {isAdmin ? <FontAwesomeIcon icon={faPlus} size="1x" /> : null}
         </div>
+
+        {showSelect ? <div>
+            <Select 
+              defaultChecked={false}
+              onChange={({target: { value }}) => {
+              setShowSelect(false)
+              const option = options.find(option => option.type === value)
+              setSource(option)
+            }}>
+              {options.map((options) => <option>{options.type}</option>)}
+            </Select>
+        </div> : null}
 
         {items.map( item => {
           return (
@@ -76,10 +101,11 @@ const Node = ({ source:{icon, items, isAdmin }}) => {
 
 export const TreeComponent = () => {
 
+  const [source, setSource] = useState(Data)
   const style = styles()
   return (
     <div className={style.wrapper}>
-      <Node source={Data}/>
+      <Node dataSource={source} setSource={setSource}/>
     </div>
   )
 }
