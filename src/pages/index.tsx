@@ -1,5 +1,5 @@
 import * as React from "react";
-import { TreeComponent } from "../components/Form";
+import { TreeComponent } from "../components/Tree";
 
 const pageStyles = {
   color: "#232129",
